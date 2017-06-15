@@ -18,5 +18,5 @@
     "rollup-plugin-node-resolve": "^1.7.1"
   },
   "author": "Nick Kossifidis",
-  "license": "ISC"
+  "license": "(ISC OR GPL-3.0)"
 }

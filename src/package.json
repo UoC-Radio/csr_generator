@@ -1,0 +1,22 @@
+{
+  "name": "csr_generator",
+  "version": "1.0.0",
+  "description": "Simple CSR/Private key generator",
+  "main": "es6.js",
+  "scripts": {
+    "build": "rollem -c",
+    "postinstall": "npm run build"
+  },
+  "dependencies": {
+    "pvutils": "latest",
+    "asn1js": "latest",
+    "pkijs": "latest"
+  },
+  "devDependencies": {
+    "rollem": "git+https://github.com/PeculiarVentures/rollem.git",
+    "rollup": "0.34.7",
+    "rollup-plugin-node-resolve": "^1.7.1"
+  },
+  "author": "Nick Kossifidis",
+  "license": "ISC"
+}

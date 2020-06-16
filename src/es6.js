@@ -10,7 +10,7 @@ import AttributeTypeAndValue from "pkijs/src/AttributeTypeAndValue.js";
 \***************/
 
 /*
- * This is basicaly a cleaned-up version of PKI.js's PKCS10 example
+ * This is basically a cleaned-up version of PKI.js's PKCS10 example
  */
 
 /*********\
@@ -19,7 +19,7 @@ import AttributeTypeAndValue from "pkijs/src/AttributeTypeAndValue.js";
 
 function formatPEM(pemString)
 {
-	/// <summary>Format string in order to have each line with length equal to 63</summary>
+	/// <summary>Format string in order to have each line with length equal to 64</summary>
 	/// <param name="pemString" type="String">String to format</param>
 	
 	const stringLength = pemString.length;
@@ -46,7 +46,7 @@ function formatPEM(pemString)
 
 function createPKCS10()
 {
-	//Initial variables
+	//Initialize variables
 	let sequence = Promise.resolve();
 
 	const hashAlg = "SHA-256";

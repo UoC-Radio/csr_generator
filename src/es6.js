@@ -17,25 +17,27 @@ import AttributeTypeAndValue from "pkijs/src/AttributeTypeAndValue.js";
 * HELPERS *
 \*********/
 
+/**
+ * Format string in order to have each line with length equal to 64
+ * @param {string} pemString String to format
+ * @returns {string} Formatted string
+ */
 function formatPEM(pemString)
 {
-	/// <summary>Format string in order to have each line with length equal to 64</summary>
-	/// <param name="pemString" type="String">String to format</param>
-	
-	const PEM_STRING_LENGTH = pemString.length, LINE_LENGTH = 64;
-	const wrapNeeded = PEM_STRING_LENGTH > LINE_LENGTH;
+	const pemStringLength = pemString.length, LINE_LENGTH = 64;
+	const wrapNeeded = pemStringLength > LINE_LENGTH;
 	
 	if(wrapNeeded)
 	{
 		let formattedString = "", wrapIndex = 0;
 		
-		for(let i = LINE_LENGTH; i < PEM_STRING_LENGTH; i += LINE_LENGTH)
+		for(let i = LINE_LENGTH; i < pemStringLength; i += LINE_LENGTH)
 		{
 			formattedString += pemString.substring(wrapIndex, i) + "\r\n";
 			wrapIndex = i;
 		}
 		
-		formattedString += pemString.substring(wrapIndex, PEM_STRING_LENGTH);
+		formattedString += pemString.substring(wrapIndex, pemStringLength);
 		return formattedString;
 	}
 	else

@@ -10,33 +10,40 @@ import AttributeTypeAndValue from "pkijs/src/AttributeTypeAndValue.js";
 \***************/
 
 /*
- * This is basicaly a cleaned-up version of PKI.js's PKCS10 example
+ * This is basically a cleaned-up version of PKI.js's PKCS10 example
  */
 
 /*********\
 * HELPERS *
 \*********/
 
+/**
+ * Format string in order to have each line with length equal to 64
+ * @param {string} pemString String to format
+ * @returns {string} Formatted string
+ */
 function formatPEM(pemString)
 {
-	/// <summary>Format string in order to have each line with length equal to 63</summary>
-	/// <param name="pemString" type="String">String to format</param>
+	const pemStringLength = pemString.length, LINE_LENGTH = 64;
+	const wrapNeeded = pemStringLength > LINE_LENGTH;
 	
-	const stringLength = pemString.length;
-	let resultString = "";
-	
-	for(let i = 0, count = 0; i < stringLength; i++, count++)
+	if(wrapNeeded)
 	{
-		if(count > 63)
+		let formattedString = "", wrapIndex = 0;
+		
+		for(let i = LINE_LENGTH; i < pemStringLength; i += LINE_LENGTH)
 		{
-			resultString = `${resultString}\r\n`;
-			count = 0;
+			formattedString += pemString.substring(wrapIndex, i) + "\r\n";
+			wrapIndex = i;
 		}
 		
-		resultString = `${resultString}${pemString[i]}`;
+		formattedString += pemString.substring(wrapIndex, pemStringLength);
+		return formattedString;
 	}
-	
-	return resultString;
+	else
+	{
+		return pemString;
+	}
 }
 
 
@@ -46,7 +53,7 @@ function formatPEM(pemString)
 
 function createPKCS10()
 {
-	//Initial variables
+	//Initialize variables
 	let sequence = Promise.resolve();
 
 	const hashAlg = "SHA-256";

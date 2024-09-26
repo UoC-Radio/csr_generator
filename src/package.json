@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "rollem": "git+https://github.com/PeculiarVentures/rollem.git",
-    "rollup": "0.34.7",
+    "rollup": "2.79.2",
     "rollup-plugin-node-resolve": "^1.7.1"
   },
   "author": "Nick Kossifidis",
